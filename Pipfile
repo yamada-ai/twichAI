@@ -8,6 +8,9 @@ numpy = "*"
 twitchio = "*"
 nest-asyncio = "*"
 setuptools = "*"
+ginza = "*"
+torch = {file = "https://download.pytorch.org/whl/cu111/torch-1.8.1%2Bcu111-cp38-cp38-linux_x86_64.whl"}
+transformers = "==4.8.1"
 
 [dev-packages]
 ipykernel = "*"
