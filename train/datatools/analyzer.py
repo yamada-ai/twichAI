@@ -20,7 +20,12 @@ import collections
 
 from tqdm import tqdm
 
-# tokenizer_  = None
+import MeCab
+from wakame.tokenizer import Tokenizer
+from wakame.analyzer import Analyzer
+from wakame.charfilter import *
+from wakame.tokenfilter import *
+tokenizer_ = Tokenizer(use_neologd=True)
 
 # ginza のプリセット
 pos_preset = [
@@ -121,8 +126,11 @@ def clean_text(text):
 def normalized_span(text):
     return [m.normalized_form() for m in tokenizer_obj.tokenize(text, tmode)]
 
-# def mecab_tokenize(text):
-#     return tokenizer_.tokenize(text, wakati=True)
+def mecab_tokenize(text):
+    return tokenizer_.tokenize(text, wakati=True)
+
+def ginza_tokenize(text):
+    return [t.otrh_ for t in nlp(text)]
 
 def fill_SYMBOL(L):
     return list(map(filler_func, L))

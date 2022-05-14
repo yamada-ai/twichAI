@@ -1,7 +1,6 @@
 
 import pickle
 import os
-import dill
 
 class DataManager:
     def __init__(self, data_path, format_="pickle") -> None:
@@ -18,9 +17,9 @@ class DataManager:
             with open(self.data_path+name, "wb") as f:
                 pickle.dump(obj, f)
             print("success save : {0}{1}".format(self.data_path, name))
-        elif self.format_ == "dill":
-            with open(self.data_path+name, "wb") as f:
-                dill.dump(obj, f)
+        # elif self.format_ == "dill":
+        #     with open(self.data_path+name, "wb") as f:
+        #         dill.dump(obj, f)
             print("success save : {0}{1}".format(self.data_path, name))
 
     def load_data(self, name):
@@ -28,8 +27,8 @@ class DataManager:
             with open(self.data_path+name, "rb") as f:
                 obj = pickle.load(f)
             print("success load : {0}{1}".format(self.data_path, name))
-        elif self.format_ == "dill":
-            with open(self.data_path+name, "rb") as f:
-                obj = dill.load(f)
+        # elif self.format_ == "dill":
+        #     with open(self.data_path+name, "rb") as f:
+        #         obj = dill.load(f)
             print("success load : {0}{1}".format(self.data_path, name))
         return obj
