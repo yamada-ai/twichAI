@@ -18,6 +18,7 @@ ja-ginza = "*"
 neologdn = "*"
 mecab-python3 = "*"
 wakame = "*"
+beautifulsoup4 = "*"
 
 [dev-packages]
 ipykernel = "*"
