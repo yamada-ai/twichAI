@@ -259,10 +259,10 @@ def main():
         reader = csv.reader(f, delimiter="\t")
         conv_data = [row for row in reader]
 
-    lim=50000
+    lim = 100000
     conv_data_mini = random.sample(conv_data, lim)
 
-    src_str, tgt_str = make_Src_Tgt(conv_data)
+    src_str, tgt_str = make_Src_Tgt(conv_data_mini)
 
     # 学習用のデータを分割
     src_trainval_str, src_test_str, tgt_trainval_str, tgt_test_str= train_test_split(src_str, tgt_str, test_size=0.20, random_state=5)
@@ -352,7 +352,7 @@ def main():
     epoch = 30
     best_loss = float('Inf')
     best_model = None
-    patience = 15
+    patience = 5
     counter = 0
 
     for loop in range(1, epoch + 1):
@@ -394,9 +394,11 @@ def main():
 
     # 保存 保険
     model_path = "../models/transformer/"
-    model_name = "transformer_lim={0}.pickle".format(lim)
+    model_name = "transformer_lim={0}_best.pickle".format(lim)
     modelM = DataManager(model_path)
     modelM.save_data(model_name, best_model)
+    model_name = "transformer_lim={0}_.pickle".format(lim)
+    modelM.save_data(model_name, model)
 
 
 if __name__ == "__main__":

@@ -129,7 +129,8 @@ class Collector2:
                 data = json.load(f)
             self.title_set = set(data["ncode"])
             print("success load : {0}".format(self.out_path+titles))
-            self.title_set.update(set(os.listdir(self.out_path)))
+        
+        self.title_set.update(set(os.listdir(self.out_path)))
         
         return True
 
@@ -144,5 +145,5 @@ class Collector2:
 titles = "ncodes_{0}.json".format(50)
 col = Collector2(out_path="../../corpus/novel/")
 col.load("", titles)
-col.crawl(limit=100, num_page=100)
+col.crawl(limit=500, num_page=100)
 col.save("", titles)

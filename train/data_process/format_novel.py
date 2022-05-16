@@ -24,8 +24,9 @@ def clean_text_plain(text):
     # text_ = re.sub(r'\([^\)]*\)', "", text_)
     # text_ = re.sub(r'\([^\)]*\)', "", text_)
     text_ = re.sub(r'\d+', "0", text_)
-    if "……" in text_:
-        text_ = text_.replace("……", "…")
+    # if "……" in text_:
+    #     text_ = text_.replace("……", "…")
+    text_ = text_.replace("…", "")
     return text_
 
 # 1ページの小説をデータに変換
@@ -97,7 +98,7 @@ for ncode in tqdm(ncodes):
 
 out_path = "../../corpus/novel_formated/"
 
-corpus_name = "novel_segments.tsv"
+corpus_name = "novel_segments2.tsv"
 import csv
 
 with open(out_path+corpus_name, "w") as f:
