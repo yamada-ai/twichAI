@@ -83,7 +83,7 @@ class Seq2SeqTransformer(nn.Module):
         )
         self.transformer_encoder = TransformerEncoder(encoder_layer, num_layers=num_encoder_layers)
         
-        self.token_embedding_tgt = TokenEmbedding(vocab_size_tgt, embedding_size)
+        self.token_embedding_tgt = TokenEmbedding(vocab_size_tgt, embedding_size, PAD_IDX)
         decoder_layer = TransformerDecoderLayer(
             d_model=embedding_size, nhead=nhead, dim_feedforward=dim_feedforward
         )
