@@ -118,7 +118,7 @@ class PositionalEncoding(nn.Module):
         self.register_buffer('embedding_pos', embedding_pos)
 
     def forward(self, token_embedding: Tensor):
-        return self.dropout(token_embedding + self.embedding_pos[: token_embedding.size(0), :])
+        return self.dropout(token_embedding + self.embedding_pos[: token_embedding.size(0)])
 
 def create_mask(src, tgt, PAD_IDX):
     
