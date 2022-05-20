@@ -168,3 +168,4 @@ DB/
 corpus/
 models/
 train/model/
+test/.data/
