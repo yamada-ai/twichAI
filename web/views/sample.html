@@ -1,6 +1,11 @@
-<html>
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./assets/style.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> -->
+</head>
 <body>
-
+  <div id="model-3d">
 <script type="module">
 // three.jsをCDNからimport　※最新版だとなんかバグったので古い版を指定しています
 import * as THREE from 'https://cdn.skypack.dev/three@^0.136.0';
@@ -64,5 +69,22 @@ function animate() {
 animate();
 
 </script>
+  </div>
+  <div id="app">
+    <div id="message-card-area" class="frame">
+      <template id="message-template">
+        <article class="message is-medium animate__animated animate__backInUp endroll" data-message-id="">
+          <div class="message-header">
+            <p class="question"></p>
+          </div>
+          <div class="message-body">
+            <p class="answer"></p>
+          </div>
+        </article>
+      </template>
+    </div>
+  </div>
+
+  <script src="./assets/nico.js"></script>
 </body>
 </html>

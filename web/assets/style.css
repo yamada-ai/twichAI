@@ -1,0 +1,66 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
+body {
+    position: relative;
+    margin: 0;
+    overflow: hidden;
+}
+
+#app {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    color: white;
+    /* background-color: aquamarine; */
+    /* top: 0; */
+}
+
+#message-card-area {
+    position: fixed;
+    /* padding: 10px; margin-bottom: 10px; border: 1px solid red; */
+    top: 10vh;
+    width: 30vw;
+    height: 80vh;
+}
+
+#model-3d {
+    position: absolute;
+    top: 0;
+}
+
+.message {
+    position: absolute;
+    width: 100%;
+}
+
+
+.frame {
+width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.endroll {
+    transform: translateY(100vh);
+    animation-timing-function: linear;
+    /* animation-iteration-count: infinite; */
+
+}
+
+.never-enough {
+    animation-name: endroll;
+}
+
+@keyframes endroll {
+    0% {
+        transform: translateY(100vh);
+    }
+
+    100% {
+        transform: translateY(-100%);
+    }
+}
+
+.cardhidden {
+    display: none;
+}
