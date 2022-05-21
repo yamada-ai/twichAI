@@ -19,6 +19,7 @@ neologdn = "*"
 mecab-python3 = "*"
 wakame = "*"
 beautifulsoup4 = "*"
+bottle = "*"
 
 [dev-packages]
 ipykernel = "*"
