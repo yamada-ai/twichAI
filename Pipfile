@@ -19,6 +19,10 @@ neologdn = "*"
 mecab-python3 = "*"
 wakame = "*"
 beautifulsoup4 = "*"
+sentence-transformers = "==2.1.0"
+install = "*"
+fugashi = "*"
+ipadic = "*"
 
 [dev-packages]
 ipykernel = "*"
