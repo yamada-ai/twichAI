@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./assets/style.css">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"> -->
+</head>
+<body>
+  <div id="model-3d">
+<script type="module">
+// three.jsをCDNからimport　※最新版だとなんかバグったので古い版を指定しています
+import * as THREE from 'https://cdn.skypack.dev/three@^0.136.0';
+import {GLTFLoader} from 'https://cdn.skypack.dev/three@^0.136.0/examples/jsm/loaders/GLTFLoader.js';
+
+// シーン作成
+const scene = new THREE.Scene();
+
+// カメラ作成＆位置調整
+const camera = new THREE.PerspectiveCamera(25, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.set(0, 1, 6);
+
+// レンダラー作成
+const renderer = new THREE.WebGLRenderer();
+renderer.outputEncoding = THREE.sRGBEncoding; // この設定が元のVRoidモデルに近い気がする
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+// レンダラーをHTMLのbodyに追加
+document.body.appendChild(renderer.domElement);
+
+// 使用するVRMモデルのURL(.gltf / .glbも可)
+const url = 'assets/yamada.vrm';
+
+// モデルのロード
+const loader = new GLTFLoader();
+let model = null;
+loader.load(
+    url,
+    // ロードが完了した際に呼ばれる処理
+    function (gltf) {
+        console.log('the loading is successfully completed.');
+        scene.add(gltf.scene);
+        model = gltf.scene;
+    },
+
+    // ロード中に呼ばれる処理
+    function ( xhr ) {
+        if (xhr.total != 0) {
+            // HTTPヘッダのContent-Length headerが未設定の場合はxhr.total=0
+            console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+        }
+    },
+
+    // エラーが発生した場合に呼ばれる処理
+    function ( error ) {
+        console.log( 'An error happened' );
+        console.log( error );
+    }
+);
+
+// 描画処理(横方向に回転するだけの例)
+function animate() {
+    requestAnimationFrame(animate);
+
+    if (model != null) { // ロードが完了するまではnull
+        model.rotation.y = Math.PI;
+    }
+
+    renderer.render(scene, camera);
+}
+animate();
+
+</script>
+  </div>
+  <div id="app">
+    <div id="message-card-area" class="frame">
+      <template id="message-template">
+        <article class="message is-medium animate__animated animate__backInUp endroll" data-message-id="">
+          <div class="message-header">
+            <p class="question"></p>
+          </div>
+          <div class="message-body">
+            <p class="answer"></p>
+          </div>
+        </article>
+      </template>
+    </div>
+  </div>
+
+  <script src="./assets/nico.js"></script>
+</body>
+</html>

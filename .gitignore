@@ -168,3 +168,11 @@ DB/
 corpus/
 models/
 train/model/
+test/.data/
+test/example.db
+test/example.db-journal
+test/yamada.vrm
+test/assets/yamada.vrm
+twitchAI/assets/yamada.vrm
+twitchAI/example.db
+web/node_modules/
