@@ -23,6 +23,7 @@ sentence-transformers = "==2.1.0"
 install = "*"
 fugashi = "*"
 ipadic = "*"
+bottle = "*"
 
 [dev-packages]
 ipykernel = "*"
