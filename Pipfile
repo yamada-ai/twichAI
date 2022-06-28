@@ -24,6 +24,8 @@ install = "*"
 fugashi = "*"
 ipadic = "*"
 bottle = "*"
+matplotlib = "*"
+seaborn = "*"
 
 [dev-packages]
 ipykernel = "*"
