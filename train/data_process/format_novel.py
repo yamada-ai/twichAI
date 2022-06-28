@@ -4,7 +4,7 @@ sys.path.append("../")
 from datatools.analyzer import *
 
 
-novel_path = "../../corpus/novel/"
+novel_path = "../../corpus/novel2/"
 ncodes= [x  for x in os.listdir(novel_path) if "." not in x ]
 
 def format_EOS(sentence):

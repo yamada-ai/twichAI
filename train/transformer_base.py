@@ -10,6 +10,8 @@ from torch.utils.data import dataset
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
+
+
 class PositionalEncoding(nn.Module):
 
     def __init__(self, d_model: int, dropout: float = 0.1, max_len: int = 5000):
@@ -68,9 +70,13 @@ class TransformerModel(nn.Module):
         return output
 
 
-def generate_square_subsequent_mask(sz: int) -> Tensor:
-    """Generates an upper-triangular matrix of -inf, with zeros on diag."""
-    return torch.triu(torch.ones(sz, sz) * float('-inf'), diagonal=1)
+# def generate_square_subsequent_mask(sz: int) -> Tensor:
+#     """Generates an upper-triangular matrix of -inf, with zeros on diag."""
+#     return torch.triu(torch.ones(sz, sz) * float('-inf'), diagonal=1, device=device)
+def generate_square_subsequent_mask(seq_len, PAD_IDX):
+    mask = (torch.triu(torch.ones((seq_len, seq_len), device=device)) == 1).transpose(0, 1)
+    mask = mask.float().masked_fill(mask == 0, float('-inf')).masked_fill(mask == PAD_IDX, float(0.0))
+    return torch.tensor(mask, device=device)
 
 def create_mask(src, tgt, PAD_IDX):
     
